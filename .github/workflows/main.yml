@@ -1,0 +1,20 @@
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-python@4
+        name: Checkout code
+
+      - uses: actions/setup-python@5
+        name: Setup Python
+        whith:
+          python-versnio: '3.10.12'
+
+      -name: Install dependencies
+      run:
+        pip install fastapi locust pytest uvicorn coverage httpx pytest-mock pytest-profiling pylint sqlalchemy pydanticgit push
+
+      -name: Execute test
+        run:
+          coverage run -m pytest; coverage xml
